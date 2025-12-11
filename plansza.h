@@ -1,37 +1,21 @@
+#pragma once
 #include "statki.h"
 #include <iostream>
+#include <vector>
 
 enum kratka { PUSTA, ZAJETE, TRAFIONY, PUDLO };
 
-lass Plansza {
+
+template <typename T>
+class Plansza {
 private:
-    int rozmiar;
-    kratka** pola;
+    int roz;    // Nie moze miec takiej samej nazwy co nazwa metody  
+    std::vector<std::vector<T>> pola;
 
-// todo: plansza to ma byc template, poprawic to
-}
+public:
+    Plansza(int r);
 
-struct StatPoz {
-    Statek* s; // WskaŸnik na statek (lub nullptr/0 jeœli woda)
-    int x;
-    int y;
-
-    StatPoz() : s(0), x(0), y(0) {}
-    StatPoz(Statek* s, int x, int y) : s(s), x(x), y(y) {}
+    T sprawdz(int x, int y) const;
+    void ustaw(int x, int y, T wartosc);
+    int rozmiar() const { return rozmiar; } // Metoda potrzebna dla operatora<<
 };
-
-inline std::ostream& operator<<(std::ostream& o, const StatPoz& s) {
-    if (s.s == 0) {
-        o << "~"; // Woda
-    }
-    else {
-        // Obiekt StatPoz pyta wskazywany Statek o jego stan w punkcie (x,y)
-        if (s.s->czyTrafiony(s.x, s.y)) {
-            o << "X"; // Statek trafiony w tym miejscu
-        }
-        else {
-            o << "O"; // Statek stoi w tym miejscu
-        }
-    }
-    return o;
-}

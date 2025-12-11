@@ -6,6 +6,21 @@
 
 using namespace std;
 
+void Statek::dodajSegment(int x, int y) {
+    pozycje.insert({ x, y });
+    len++;
+}
+
+// dokonujemy strzalu i jesli trafilismy to ta pozycja jest czyszczona
+bool Statek::strzal(int x, int y) {
+    auto it = pozycje.find({ x, y });
+    if (it != pozycje.end()) {
+        pozycje.erase(it);
+        return true;
+    }
+    return false;
+}
+
 bool Statek::czyTrafiony(int x, int y) {
     auto tr = pozycje.find({ x,y });
     if (tr == pozycje.end()) {
@@ -18,10 +33,7 @@ bool Statek::czyTrafiony(int x, int y) {
 
 
 /*
-class Okret {
-statek *s
-plansza<kratka>
-plansza<OkretPos *>
+
 statek s(3)
 
 
