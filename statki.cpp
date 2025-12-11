@@ -1,18 +1,20 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include "statki.h"
 
 enum kratka { PUSTA, ZAJETE, TRAFIONY, PUDLO };
 
-class Statek {
-public:
-    int dlugosc;
-    int x, y;
-    bool poziom;       // true = poziomo
-    bool zatopiony;
 
-    Statek(int d) : dlugosc(d), x(0), y(0), poziom(true), zatopiony(false) {}
-};
+
+bool Statek::czyTrafiony(int x, int y) {
+    auto tr = pozycje.find({ x,y });
+    if (tr == pozycje.end()) {
+        return true;
+    }
+    return false;
+}
+
 
 class Plansza {
 private:
@@ -197,9 +199,3 @@ int main() {
     po.ustaw(4, 4, &okPos);
     // &OkretPos(&s,2,3)); w ten spsob aby pominac zmienna aby ustawic okret na danej pozycji
 }
-
-
-// 1. Mechanizm gry - silnik
-// 2. Interfejs Win32 gui, narysowaæ z png obrazki
-
-

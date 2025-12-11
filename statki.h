@@ -1,45 +1,23 @@
 #pragma once
-
-#include "resource.h"
-
-/*
- Obiekty: statek, plansza, gracz, gra
- metody: plansza(int), wyczysc(), kratka sprawdz(int, int), wyswietl(),
-		 statek(int, int, bool), ustaw(int, int), czy_zatopiony(),
-		 gracz(string), ustaw_statek(statek, int, int, bool), strzel(int, int),
-		 gra(gracz, gracz), rozpocznij(), tura(int, int), sprawdz_zwyciezce()
-		 bool kontyunuj_gry()
-
-		 */
-
-// Statki maj� by� mozliwie prosto zrobione... jak saper w ms xp 
-// kazdy ma byc w oddzielnym.
-
-enum kratka {PUSTA, ZAJETE, TRAFIONY, PUDLO };
-enum statek {}; // typy statku 
+#include <set>
+#include <utility> // dla std::pair
 
 class Statek {
-
-};
-
-class Plansza {
 private:
-	int rozmiar;
-	char** kratki;
+    // Zbiór par wspó³rzêdnych (x, y), które s¹ "zdrowe"
+    std::set<std::pair<int, int>> pozycje;
+    int rozmiarPoczatkowy;
 
 public:
-	Plansza(int rozmiar);
-	void wyczysc();
-	bool kratka_sprawdz(int x, int y);
-	void wyswietl();
+    Statek();
+    //todo: brakuje konstruktora statek(statek poz*)
+    // najlepiej wskaznik jesli wszystkie pozycje statkow mamy przech w plansza<statek poz*>
+
+    // Dodaje segment do "zdrowych"
+    void dodajSegment(int x, int y);
+
+    // Rejestruje trafienie (usuwa segment ze zbioru)
+    bool strzal(int x, int y);
+    bool czyTrafiony(int x, int y);
+    bool czyZatopiony() const;
 };
-
-class Gracz {
-	
-};
-
-class Gra {
-
-};
-
-
