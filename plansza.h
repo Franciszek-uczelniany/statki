@@ -19,3 +19,4 @@ public:
     void ustaw(int x, int y, T wartosc);
     int rozmiar() const { return rozmiar; } // Metoda potrzebna dla operatora<<
 };
+

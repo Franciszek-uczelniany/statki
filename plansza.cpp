@@ -28,7 +28,8 @@ Plansza<T>::Plansza(int r) : roz(r) {
 
 
 
-inline std::ostream& operator<<(std::ostream& o, const StatPoz& s) {
+inline std::ostream& operator<<(std::ostream& o, const StatPoz& s)
+{
     if (s.s == 0) {
         o << "~"; // Woda
     }

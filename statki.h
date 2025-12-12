@@ -1,19 +1,21 @@
 #pragma once
 #include <set>
 #include <utility> // dla std::pair
+#include <ostream>
 #include "plansza.h"
 
-class Statek {
+class Statek
+{
 private:
     // Zbiór par wspó³rzêdnych (x, y), które s¹ "zdrowe"
     std::set<std::pair<int, int>> pozycje;
-    int len; //tutaj przechowujemy dlugosc statku, bo np tankowiec ma 300m
-             // ale moga i miec 450m, podczas gdy lotniskowce maja po 270m
+    int len; // tutaj przechowujemy dlugosc statku, bo np tankowiec ma 300m
+             //  ale moga i miec 450m, podczas gdy lotniskowce maja po 270m
 
 public:
     Statek();
-    //todo: brakuje konstruktora statek(statek poz*)
-    // najlepiej wskaznik jesli wszystkie pozycje statkow mamy przech w plansza<statek poz*>
+    // todo: brakuje konstruktora statek(statek poz*)
+    //  najlepiej wskaznik jesli wszystkie pozycje statkow mamy przech w plansza<statek poz*>
 
     // Dodaje segment do "zdrowych"
     void dodajSegment(int x, int y);
@@ -24,16 +26,20 @@ public:
     bool czyZatopiony() const;
 };
 
-
-struct StatPoz {
+class StatPoz : private Statek
+{
 private:
-    Statek* s; // Wskaznik na statek (nullptr/0 jesli woda)
     int x;
     int y;
 
 public:
-    StatPoz() : s(0), x(0), y(0) {}
-    StatPoz(Statek* s, int x, int y) : s(s), x(x), y(y) {}
+    Statek *s; // Wskaznik na statek (nullptr/0 jesli woda)
+    //    const Statek* s;
+    //   StatPoz() : _s(0), x(0), y(0) {s = _s;}
+    StatPoz() : s(0), x(0), y(0) { s = s; }
+
+    StatPoz(Statek *s, int x, int y) : s(s), x(x), y(y) { s = s; }
+    friend inline std::ostream &operator<<(std::ostream &o, const StatPoz &s);
 };
 
 /*
