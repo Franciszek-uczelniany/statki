@@ -7,15 +7,21 @@
 class Statek
 {
 private:
-    // Zbiór par wspó³rzêdnych (x, y), które s¹ "zdrowe"
+    // Zbiór par wspolrzednych
     std::set<std::pair<int, int>> pozycje;
-    int len; // tutaj przechowujemy dlugosc statku, bo np tankowiec ma 300m
-             //  ale moga i miec 450m, podczas gdy lotniskowce maja po 270m
+    int len; // tutaj przechowujemy dlugosc statku
+             
+    //len nie jest potrzebny bo moge sobie ustawic getlen wlasna metode, ale z std::pair jest metoda do zdobycia len
+    // i mam niepotrzebnie skompilowane 
+
+    // std::vector std::pair i std::set poznac nauczyc sie
+    // ksiazki do biblioteki oddac przed swietami
 
 public:
     Statek();
     // todo: brakuje konstruktora statek(statek poz*)
     //  najlepiej wskaznik jesli wszystkie pozycje statkow mamy przech w plansza<statek poz*>
+    // Statek(len, plansza na pola.)
 
     // Dodaje segment do "zdrowych"
     void dodajSegment(int x, int y);
@@ -49,4 +55,11 @@ Plansza<kratka> poz;
 Plansza<StatPoz*> pozycja;
 
 };
+*/
+
+/*
+
+
+UML made easy
+
 */

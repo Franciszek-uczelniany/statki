@@ -32,6 +32,7 @@ bool Statek::czyTrafiony(int x, int y) {
 
 
 
+
 /*
 
 statek s(3)

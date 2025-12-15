@@ -1,30 +1,6 @@
 #include "plansza.h"
 
-//template typename T
-template <class T>
-T Plansza<T>::sprawdz(int x, int y) const {
-    if(x >= 0 && x < roz && y >= 00 && y < roz)
-        return pola[y][x];
 
-        return T();
-}
-
-template <typename T>
-std::ostream& operator<<(std::ostream& o, const Plansza<T>& p) {
-    for (int y = 0; y < p.roz(); y++) {
-        for (int x = 0; x < p.roz(); x++) {
-            o << p.sprawdz(x, y) << " ";
-        }
-        o << "\n";
-    }
-    return o;
-}
-
-
-template <typename T>
-Plansza<T>::Plansza(int r) : roz(r) {
-    pola.assign(r, std::vector<T>(r));
-}
 
 
 
