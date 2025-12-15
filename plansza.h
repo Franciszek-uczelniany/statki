@@ -11,13 +11,11 @@ private:
   std::vector<std::vector<T>> pola;
 
 public:
-  Plansza(int r);
-
+  Plansza(int r); // : roz(r), pola(r, std::vector<T>(r)) {};
   T sprawdz(int x, int y) const;
   void ustaw(int x, int y, T wartosc);
   int rozmiar() const { return roz; } // Metoda potrzebna dla operatora<<
   virtual void Drukuj();
-  void Dodaj(T var);
 };
 
 
@@ -30,8 +28,8 @@ template <class T> T Plansza<T>::sprawdz(int x, int y) const {
 
 template <typename T>
 std::ostream &operator<<(std::ostream &o, const Plansza<T> &p) {
-  for (int y = 0; y < p.roz(); y++) {
-    for (int x = 0; x < p.roz(); x++) {
+  for (int y = 0; y < p.rozmiar(); y++) {
+    for (int x = 0; x < p.rozmiar(); x++) {
       o << p.sprawdz(x, y) << " ";
     }
     o << "\n";

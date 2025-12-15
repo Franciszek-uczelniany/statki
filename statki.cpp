@@ -6,6 +6,12 @@
 
 using namespace std;
 
+Statek::Statek(int len, std::pair<int,int>* pola) {
+        for (int i = 0; i < len; i++) {
+            pozycje.insert(pola[i]);
+        }
+    }
+
 void Statek::dodajSegment(int x, int y) {
     pozycje.insert({ x, y });
     len++;

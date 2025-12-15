@@ -7,7 +7,6 @@
 class Statek
 {
 private:
-    // Zbiór par wspolrzednych
     std::set<std::pair<int, int>> pozycje;
     int len; // tutaj przechowujemy dlugosc statku
              
@@ -19,6 +18,7 @@ private:
 
 public:
     Statek();
+    Statek(int len, std::pair<int,int>* pola);
     // todo: brakuje konstruktora statek(statek poz*)
     //  najlepiej wskaznik jesli wszystkie pozycje statkow mamy przech w plansza<statek poz*>
     // Statek(len, plansza na pola.)

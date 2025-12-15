@@ -18,7 +18,7 @@ private:
 };
 
 Gracz::Gracz() {
-  okrety.
+  
   int okrety[3] = {4, 3, 2}; // lista okrętów przy czym kazdy element tablicy to długość 1 okrętu
   Plansza plansza.(16)[2];
 }
