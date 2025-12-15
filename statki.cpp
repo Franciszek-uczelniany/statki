@@ -29,7 +29,9 @@ bool Statek::czyTrafiony(int x, int y) {
     return false;
 }
 
-
+bool Statek::czyZatopiony() const {
+    return pozycje.empty();
+}
 
 
 

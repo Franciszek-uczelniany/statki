@@ -32,19 +32,16 @@ public:
     bool czyZatopiony() const;
 };
 
-class StatPoz : private Statek
-{
+class StatPoz {
 private:
+    Statek* s;
     int x;
     int y;
 
 public:
-    Statek *s; // Wskaznik na statek (nullptr/0 jesli woda)
-    //    const Statek* s;
-    //   StatPoz() : _s(0), x(0), y(0) {s = _s;}
-    StatPoz() : s(0), x(0), y(0) { s = s; }
+    StatPoz() : s(nullptr), x(0), y(0) {}
+    StatPoz(Statek *statek, int x, int y) : s(statek), x(x), y(y) {}
 
-    StatPoz(Statek *s, int x, int y) : s(s), x(x), y(y) { s = s; }
     friend inline std::ostream &operator<<(std::ostream &o, const StatPoz &s);
 };
 

@@ -15,24 +15,17 @@ public:
 
   T sprawdz(int x, int y) const;
   void ustaw(int x, int y, T wartosc);
-  int rozmiar() const { return rozmiar; } // Metoda potrzebna dla operatora<<
+  int rozmiar() const { return roz; } // Metoda potrzebna dla operatora<<
   virtual void Drukuj();
+  void Dodaj(T var);
 };
 
-// szablony mają byc w nagłówku.
-// {4,4,3,3,2,2,2,1,1,} zze 4 pozycje 4 poz 3 pozycje 3 pozycje
-// jak nie uda sie poziomo to pionowo mozna postawic.
-// robimy gracz komputer ktory ma losowo przydzielac statki do pól
 
-// metoda CzyPuste na planszy np
-// najlepiej aby byla dopasowana do gracza
-
-// template typename T
 template <class T> T Plansza<T>::sprawdz(int x, int y) const {
   if (x >= 0 && x < roz && y >= 0 && y < roz)
     return pola[y][x];
 
-  // a jeśli jest poza tymi zakresami to wyrzuć wyjątek
+    throw std::out_of_range("Poza plansza");
 };
 
 template <typename T>
@@ -50,8 +43,7 @@ template <typename T> Plansza<T>::Plansza(int r) : roz(r) {
   pola.assign(r, std::vector<T>(r));
 }
 
-template <typename T>
-void Plansza<T>::ustaw(int x, int y, T wartosc) {
+template <typename T> void Plansza<T>::ustaw(int x, int y, T wartosc) {
     //todo
-    pola[x][y]=wartosc;
+    pola[y][x]=wartosc;
 }
