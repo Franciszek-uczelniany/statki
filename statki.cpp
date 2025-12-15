@@ -39,19 +39,3 @@ bool Statek::czyZatopiony() const {
     return pozycje.empty();
 }
 
-
-
-/*
-
-statek s(3)
-
-
-po co robimy szablon? ¿eby moc polozyc wskaŸnik na okret, bo jak bêdzie strzelanie to wtedy temu obiektowi zaznacze ze zosta³ trafiony, bo inaczej trzeba by przeszukiwac okretow ( np. w liœcie okretow - przypis red. Sprawdz(x,y) co tam jest)
-plansza ma byc ogolna dla kazdego typu.
-ogolna metoda wyswietlajaca a to jak ma byc wyswietlany ten dany typ to juz poza tym mainem napisac
-*/
-
-
-
-
-

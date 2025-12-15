@@ -1,9 +1,5 @@
 #include "plansza.h"
 
-
-
-
-
 inline std::ostream& operator<<(std::ostream& o, const StatPoz& s)
 {
     if (s.s == 0) {

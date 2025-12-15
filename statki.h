@@ -1,6 +1,6 @@
 #pragma once
 #include <set>
-#include <utility> // dla std::pair
+#include <utility>
 #include <ostream>
 #include "plansza.h"
 
@@ -14,19 +14,14 @@ private:
     // i mam niepotrzebnie skompilowane 
 
     // std::vector std::pair i std::set poznac nauczyc sie
-    // ksiazki do biblioteki oddac przed swietami
 
 public:
     Statek();
     Statek(int len, std::pair<int,int>* pola);
-    // todo: brakuje konstruktora statek(statek poz*)
-    //  najlepiej wskaznik jesli wszystkie pozycje statkow mamy przech w plansza<statek poz*>
-    // Statek(len, plansza na pola.)
+ 
 
-    // Dodaje segment do "zdrowych"
     void dodajSegment(int x, int y);
 
-    // Rejestruje trafienie (usuwa segment ze zbioru)
     bool strzal(int x, int y);
     bool czyTrafiony(int x, int y);
     bool czyZatopiony() const;
@@ -44,19 +39,3 @@ public:
 
     friend inline std::ostream &operator<<(std::ostream &o, const StatPoz &s);
 };
-
-/*
-class Okret {
-Statek *s;
-Plansza<kratka> poz;
-Plansza<StatPoz*> pozycja;
-
-};
-*/
-
-/*
-
-
-UML made easy
-
-*/

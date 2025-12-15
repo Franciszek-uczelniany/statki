@@ -9,16 +9,12 @@ class Gracz {
 
 private:
     Plansza<kratka> strzaly;
-    Plansza<StatPoz> okrety;           // to chyba dla std::vector powinno byc, wektor ma dwie skladowe x i y
-
-    /* Opis prywatnej składowej "okręty":
-        1. wartość informuje o długości statku
-        2. druga pozycja jest indeksem statku? 
-    */
+    Plansza<StatPoz> okrety;          
+  
 };
 
 Gracz::Gracz() {
   
-  int okrety[3] = {4, 3, 2}; // lista okrętów przy czym kazdy element tablicy to długość 1 okrętu
+  int okrety[3] = {4, 3, 2};
   Plansza plansza.(16)[2];
 }
