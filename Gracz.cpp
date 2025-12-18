@@ -12,9 +12,10 @@ private:
     Plansza<StatPoz> okrety;          
   
 };
-
+/*
 Gracz::Gracz() {
   
   int okrety[3] = {4, 3, 2};
   Plansza plansza.(16)[2];
 }
+*/

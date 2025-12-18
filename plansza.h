@@ -15,7 +15,7 @@ public:
   T sprawdz(int x, int y) const;
   void ustaw(int x, int y, T wartosc);
   int rozmiar() const { return roz; } // Metoda potrzebna dla operatora<<
-  virtual void Drukuj();
+  //virtual void Drukuj();      <-- to trzeba zaimplementowac
 };
 
 
