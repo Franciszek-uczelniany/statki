@@ -1,6 +1,7 @@
 #pragma once
 #include "statki.h"
 #include <iostream>
+#include <ostream>
 #include <vector>
 
 enum kratka { PUSTA, ZAJETE, TRAFIONY, PUDLO };
@@ -14,8 +15,9 @@ public:
   Plansza(int r); // : roz(r), pola(r, std::vector<T>(r)) {};
   T sprawdz(int x, int y) const;
   void ustaw(int x, int y, T wartosc);
-  int rozmiar() const { return roz; } // Metoda potrzebna dla operatora<<
+  int rozmiar() const { return roz; }; // Metoda potrzebna dla operatora<<
   //virtual void Drukuj();      <-- to trzeba zaimplementowac
+  friend ostream& operator<<(ostream& os, Plansza& p);
 };
 
 

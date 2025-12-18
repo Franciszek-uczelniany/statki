@@ -1,20 +1,27 @@
 #include "plansza.h"
+#include <iostream>
 
-inline std::ostream& operator<<(std::ostream& o, const StatPoz& s)
-{
-    if (s.s == 0) {
-        o << "~"; // Woda
-    }
-    else {
-        // Obiekt StatPoz pyta wskazywany Statek o jego stan w punkcie (x,y)
-        if (s.s->czyTrafiony(s.x, s.y)) {
-            o << "X"; // Statek trafiony w tym miejscu
+using namespace std;
+
+ostream& operator<<(ostream& os, Plansza<kratka> &p) {
+    int w = p.rozmiar();
+    int s = w;
+    //int s = p.getSzerokosc();
+
+    // nag³ówek kolumn
+    os << "   ";
+    for (int col = 0; col < s; col++)
+        os << char('A' + col) << " ";
+    os << "\n";
+
+    for (int i = 0; i < w; i++) {
+        os << (i + 1 < 10 ? " " : "") << i + 1 << " ";
+        for (int j = 0; j < s; j++) {
+            os << p.sprawdz(i, j) << " ";
         }
-        else {
-            o << "O"; // Statek stoi w tym miejscu
-        }
+        os << "\n";
     }
-    return o;
+    return os;
 }
 
 inline std::ostream& operator<<(std::ostream& o, kratka k) {
