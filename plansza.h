@@ -5,6 +5,7 @@
 #include <vector>
 
 enum kratka { PUSTA, ZAJETE, TRAFIONY, PUDLO };
+using namespace std;
 
 template <typename T> class Plansza {
 private:
@@ -17,7 +18,8 @@ public:
   void ustaw(int x, int y, T wartosc);
   int rozmiar() const { return roz; }; // Metoda potrzebna dla operatora<<
   //virtual void Drukuj();      <-- to trzeba zaimplementowac
-  friend ostream& operator<<(ostream& os, Plansza& p);
+    template <typename U>
+    friend std::ostream& operator<<(std::ostream& os, const Plansza<U>& p);
 };
 
 

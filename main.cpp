@@ -15,5 +15,6 @@ int main() {
         p.ustaw(poz.first, poz.second, StatPoz(&s1, poz.first, poz.second));
     }
 
+    // brak operatora<< dla StatPoz, cokolwiek to robi
     std::cout << p << std::endl;
 }

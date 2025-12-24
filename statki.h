@@ -36,6 +36,4 @@ private:
 public:
     StatPoz() : s(nullptr), x(0), y(0) {}
     StatPoz(Statek *statek, int x, int y) : s(statek), x(x), y(y) {}
-
-    friend inline std::ostream &operator<<(std::ostream &o, const StatPoz &s);
 };
