@@ -1,0 +1,9 @@
+compilation_database_dir: .
+output_directory: diagrams
+
+diagrams:
+  classes:
+    type: class
+    glob:
+      - "*.h"
+      - "*.cpp"

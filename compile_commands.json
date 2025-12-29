@@ -1,0 +1,9 @@
+[
+{ "directory": "/home/318074/git/statki", "file": "main.cpp", "output": "/tmp/main-fbe630.o", "arguments": ["/usr/lib/llvm-14/bin/clang", "-xc++", "main.cpp", "--target=x86_64-pc-linux-gnu"]},
+{ "directory": "/home/318074/git/statki", "file": "plansza.cpp", "output": "/tmp/plansza-24e281.o", "arguments": ["/usr/lib/llvm-14/bin/clang", "-xc++", "plansza.cpp", "--target=x86_64-pc-linux-gnu"]},
+{ "directory": "/home/318074/git/statki", "file": "statki.cpp", "output": "/tmp/statki-95c8f5.o", "arguments": ["/usr/lib/llvm-14/bin/clang", "-xc++", "statki.cpp", "--target=x86_64-pc-linux-gnu"]},
+{ "directory": "/home/318074/git/statki", "file": "gracz.cpp", "output": "/tmp/main-fbe630.o", "arguments": ["/usr/lib/llvm-14/bin/clang", "-xc++", "main.cpp", "--target=x86_64-pc-linux-gnu"]},
+{ "directory": "/home/318074/git/statki", "file": "plansza.h", "output": "/tmp/plansza-24e281.o", "arguments": ["/usr/lib/llvm-14/bin/clang", "-xc++", "plansza.cpp", "--target=x86_64-pc-linux-gnu"]},
+{ "directory": "/home/318074/git/statki", "file": "statki.h", "output": "/tmp/statki-95c8f5.o", "arguments": ["/usr/lib/llvm-14/bin/clang", "-xc++", "statki.h", "--target=x86_64-pc-linux-gnu"]},
+{ "directory": "/home/318074/git/statki", "file": "gracz.h", "output": "/tmp/statki-95c8f5.o", "arguments": ["/usr/lib/llvm-14/bin/clang", "-xc++", "statki.cpp", "--target=x86_64-pc-linux-gnu"]},
+]
