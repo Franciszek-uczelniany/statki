@@ -19,9 +19,7 @@ public:
     Statek();
     Statek(int len, std::pair<int,int>* pola);
  
-
     void dodajSegment(int x, int y);
-
     bool strzal(int x, int y);
     bool czyTrafiony(int x, int y);
     bool czyZatopiony() const;

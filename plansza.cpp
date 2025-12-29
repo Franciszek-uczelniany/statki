@@ -6,9 +6,7 @@ using namespace std;
 ostream& operator<<(ostream& os, Plansza<kratka> &p) {
     int w = p.rozmiar();
     int s = w;
-    //int s = p.getSzerokosc();
 
-    // nag³ówek kolumn
     os << "   ";
     for (int col = 0; col < s; col++)
         os << char('A' + col) << " ";

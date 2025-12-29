@@ -17,16 +17,22 @@ public:
   T sprawdz(int x, int y) const;
   void ustaw(int x, int y, T wartosc);
   int rozmiar() const { return roz; }; // Metoda potrzebna dla operatora<<
-  //virtual void Drukuj();      <-- to trzeba zaimplementowac
     template <typename U>
     friend std::ostream& operator<<(std::ostream& os, const Plansza<U>& p);
 };
 
 
 template <class T> T Plansza<T>::sprawdz(int x, int y) const {
-  if (x >= 0 && x < roz && y >= 0 && y < roz)
-    return pola[y][x];
-
+  if (x >= 0 && x < roz && y >= 0 && y < roz) {
+  
+    switch (pola[y][x]) {
+    case PUSTA:    return "~";
+    case ZAJETE:   return "O";
+    case TRAFIONY: return "X";
+    case PUDLO:    return "*";
+    default:       return "?";
+    }
+}
     throw std::out_of_range("Poza plansza");
 };
 
@@ -34,7 +40,8 @@ template <typename T>
 std::ostream &operator<<(std::ostream &o, const Plansza<T> &p) {
   for (int y = 0; y < p.rozmiar(); y++) {
     for (int x = 0; x < p.rozmiar(); x++) {
-      o << p.sprawdz(x, y) << " ";
+     //TODO o << p.sprawdz(x, y) << " ";
+     printf(" %d", p.sprawdz(x, y));
     }
     o << "\n";
   }
