@@ -1,19 +1,28 @@
 #include <iostream>
-#include "plansza.h"
-#include "statki.h"
+#include "gracz.h"
+
+using namespace std;
 
 int main() {
-    std::pair<int,int> pola[3] = {
-        {4,1}, {4,2}, {4,3}
-    };
+    // Tworzymy gracza
+    Gracz gracz(10);
 
-    Statek s1(3, pola);
+    cout << "Plansza strzalow gracza (poczatkowa):\n";
+    cout << gracz.getPlanszaStrzalow() << endl;
 
-    Plansza<StatPoz> p(10);
+    // Symulujemy strzały
+    cout << "Strzal w (2,3)\n";
+    gracz.strzel(2, 3);
 
-    for (auto& poz : pola) {
-        p.ustaw(poz.first, poz.second, StatPoz(&s1, poz.first, poz.second));
-    }
+    cout << "Strzal w (5,5)\n";
+    gracz.strzel(5, 5);
 
-    std::cout << p << std::endl;
+    cout << "Strzal w (2,3) ponownie\n";
+    gracz.strzel(2, 3);
+
+    // Wypisujemy planszę strzałów
+    cout << "\nPlansza strzalow po strzalach:\n";
+    cout << gracz.getPlanszaStrzalow() << endl;
+
+    return 0;
 }

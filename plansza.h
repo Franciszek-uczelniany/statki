@@ -1,58 +1,76 @@
 #pragma once
 #include "statki.h"
 #include <iostream>
-#include <ostream>
 #include <vector>
-
-enum kratka { PUSTA, ZAJETE, TRAFIONY, PUDLO };
 using namespace std;
 
-template <typename T> class Plansza {
+enum kratka { PUSTA, ZAJETE, TRAFIONY, PUDLO };
+
+template <typename T>
+class Plansza {
 private:
-  int roz; // Nie moze miec takiej samej nazwy co nazwa metody
-  std::vector<std::vector<T>> pola;
+    int roz;
+    std::vector<std::vector<T>> pola;
 
 public:
-  Plansza(int r); // : roz(r), pola(r, std::vector<T>(r)) {};
-  T sprawdz(int x, int y) const;
-  void ustaw(int x, int y, T wartosc);
-  int rozmiar() const { return roz; }; // Metoda potrzebna dla operatora<<
+    Plansza(int r);
+    T sprawdz(int x, int y) const;
+    void ustaw(int x, int y, T wartosc);
+    int rozmiar() const { return roz; }
+
+    // Deklarujemy szablon operatora jako friend
     template <typename U>
     friend std::ostream& operator<<(std::ostream& os, const Plansza<U>& p);
 };
 
-
-template <class T> T Plansza<T>::sprawdz(int x, int y) const {
-  if (x >= 0 && x < roz && y >= 0 && y < roz) {
-  
-    switch (pola[y][x]) {
-    case PUSTA:    return "~";
-    case ZAJETE:   return "O";
-    case TRAFIONY: return "X";
-    case PUDLO:    return "*";
-    default:       return "?";
-    }
-}
-    throw std::out_of_range("Poza plansza");
-};
-
+// Konstruktor
 template <typename T>
-std::ostream &operator<<(std::ostream &o, const Plansza<T> &p) {
-  for (int y = 0; y < p.rozmiar(); y++) {
-    for (int x = 0; x < p.rozmiar(); x++) {
-     //TODO o << p.sprawdz(x, y) << " ";
-     printf(" %d", p.sprawdz(x, y));
+Plansza<T>::Plansza(int r) : roz(r) {
+    pola.assign(r, std::vector<T>(r));
+}
+
+// sprawdz()
+template <typename T>
+T Plansza<T>::sprawdz(int x, int y) const {
+    if (x >= 0 && x < roz && y >= 0 && y < roz) {
+        return pola[y][x];
     }
+    throw std::out_of_range("Poza plansza");
+}
+
+// ustaw()
+template <typename T>
+void Plansza<T>::ustaw(int x, int y, T wartosc) {
+    pola[y][x] = wartosc;
+}
+
+// operator<<
+template <typename T>
+std::ostream& operator<<(std::ostream& o, const Plansza<T>& p) {
+    o << "  ";
+    // litery kolumn
+    for (int col = 0; col < p.rozmiar(); col++)
+        o << char('A' + col) << " ";
     o << "\n";
-  }
-  return o;
+
+    for (int y = 0; y < p.rozmiar(); y++) {
+        // numery wierszy
+        o << (y + 1 < 10 ? " " : "") << (y + 1) << " ";
+        for (int x = 0; x < p.rozmiar(); x++) {
+            o << p.sprawdz(x, y) << " ";
+        }
+        o << "\n";
+    }
+    return o;
 }
 
-template <typename T> Plansza<T>::Plansza(int r) : roz(r) {
-  pola.assign(r, std::vector<T>(r));
-}
-
-template <typename T> void Plansza<T>::ustaw(int x, int y, T wartosc) {
-    //todo
-    pola[y][x]=wartosc;
+// operator<< dla enum kratka
+inline std::ostream& operator<<(std::ostream& o, kratka k) {
+    switch (k) {
+        case PUSTA:    return o << "~";
+        case ZAJETE:   return o << "O";
+        case TRAFIONY: return o << "X";
+        case PUDLO:    return o << "*";
+    }
+    return o << "?";
 }

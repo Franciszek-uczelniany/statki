@@ -1,21 +1,31 @@
-// lista czteromastowcow, itd jakie sa rodzaje statkow
-#include "plansza.h"
-#include "statki.h"
+#include "gracz.h"
 #include <iostream>
-#include <utility> //stdpair
-#include <vector>
 
-class Gracz {
+using namespace std;
 
-private:
-    Plansza<kratka> strzaly;
-    Plansza<StatPoz> okrety;          
-  
-};
-/*
-Gracz::Gracz() {
-  
-  int okrety[3] = {4, 3, 2};
-  Plansza plansza.(16)[2];
+// konstruktor
+Gracz::Gracz(int rozmiar)
+    : planszaStrzalow(rozmiar), 
+    okrety(rozmiar) {}
+
+// strzał gracza
+void Gracz::strzel(int x, int y) {
+    try {
+        kratka pole = planszaStrzalow.sprawdz(x, y);
+
+        if (pole == PUSTA) {
+            planszaStrzalow.ustaw(x, y, PUDLO);
+            cout << "Pudlo!\n";
+        } else {
+            cout << "Tu juz strzelales!\n";
+        }
+    }
+    catch (out_of_range&) {
+        cout << "Strzal poza plansze!\n";
+    }
 }
-*/
+
+// getter planszy strzałów
+const Plansza<kratka>& Gracz::getPlanszaStrzalow() const {
+    return planszaStrzalow;
+}
