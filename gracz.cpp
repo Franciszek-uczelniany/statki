@@ -11,8 +11,8 @@ Gracz::Gracz(int rozmiar) {
 }
 
 Gracz::~Gracz() {
-        free(PlanszaStrzalow);
-        free(PlanszaStatkow);
+        delete PlanszaStrzalow;
+        delete PlanszaStatkow;
 }
 
 // strzał gracza
