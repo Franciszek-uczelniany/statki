@@ -14,7 +14,6 @@ Statek::Statek(int len, std::pair<int,int>* pola) {
 
 void Statek::dodajSegment(int x, int y) {
     pozycje.insert({ x, y });
-    len++;
 }
 
 // dokonujemy strzalu i jesli trafilismy to ta pozycja jest czyszczona

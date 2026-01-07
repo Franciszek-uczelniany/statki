@@ -1,0 +1,90 @@
+@startuml
+class "std::pair<int,int>" as C_0006524010458157121833
+class C_0006524010458157121833 {
+__
+}
+class "std::set<std::pair<int,int>>" as C_0006650039729598985272
+class C_0006650039729598985272 {
+__
+}
+class "std::vector<T>" as C_0015625435119362590644
+class C_0015625435119362590644 {
+__
+}
+class "std::vector<std::vector<T>>" as C_0014512715332567525922
+class C_0014512715332567525922 {
+__
+}
+class "Statek" as C_0007731025017979817302
+class C_0007731025017979817302 {
++Statek(int len, std::pair<int,int> * pola) : void
+..
++czyTrafiony(int x, int y) : bool
++czyZatopiony() const : bool
++dodajSegment(int x, int y) : void
++strzal(int x, int y) : bool
+__
+-pozycje : std::set<std::pair<int,int>>
+}
+class "StatPoz" as C_0014978804745876764612
+class C_0014978804745876764612 {
++StatPoz() : void
++StatPoz(Statek * statek, int x, int y) : void
+__
+-s : Statek *
+-x : int
+-y : int
+}
+enum "kratka" as C_0002302079324149197336
+enum C_0002302079324149197336 {
+PUSTA
+ZAJETE
+TRAFIONY
+PUDLO
+}
+class "Plansza<T>" as C_0001834500503245001399
+class C_0001834500503245001399 {
++Plansza(int r) : void
+..
++rozmiar() const : int
++sprawdz(int x, int y) const : T
++ustaw(int x, int y, T wartosc) : void
+__
+-pola : std::vector<std::vector<T>>
+-roz : int
+}
+class "Plansza<kratka>" as C_0004464631396322766799
+class C_0004464631396322766799 {
+__
+}
+class "Plansza<StatPoz>" as C_0014994413479425637863
+class C_0014994413479425637863 {
+__
+}
+class "Gracz" as C_0009052159141389092274
+class C_0009052159141389092274 {
++Gracz(int rozmiar) : void
+..
++getPlanszaStrzalow() const : const Plansza<kratka> &
++strzel(int x, int y) : void
+__
+-okrety : Plansza<StatPoz>
+-planszaStrzalow : Plansza<kratka>
+}
+C_0006650039729598985272 ..> C_0006524010458157121833
+C_0014512715332567525922 ..|> C_0015625435119362590644
+C_0007731025017979817302 o-- C_0006650039729598985272 : -pozycje
+C_0014978804745876764612 --> C_0007731025017979817302 : -s
+C_0001834500503245001399 o-- C_0014512715332567525922 : -pola
+C_0004464631396322766799 ..> C_0002302079324149197336
+C_0004464631396322766799 ..|> C_0001834500503245001399
+C_0014994413479425637863 ..> C_0014978804745876764612
+C_0014994413479425637863 ..|> C_0001834500503245001399
+C_0009052159141389092274 ..> C_0001834500503245001399
+C_0009052159141389092274 ..> C_0002302079324149197336
+C_0009052159141389092274 o-- C_0004464631396322766799 : -planszaStrzalow
+C_0009052159141389092274 o-- C_0014994413479425637863 : -okrety
+
+'Generated with clang-uml, version 0.6.2
+'LLVM version Ubuntu clang version 15.0.7
+@enduml

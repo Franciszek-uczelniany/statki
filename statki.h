@@ -2,24 +2,24 @@
 #include <set>
 #include <utility>
 #include <ostream>
-#include "plansza.h"
 
 class Statek
 {
 private:
-    std::set<std::pair<int, int>> pozycje;
-    int len; // tutaj przechowujemy dlugosc statku
-             
-    //len nie jest potrzebny bo moge sobie ustawic getlen wlasna metode, ale z std::pair jest metoda do zdobycia len
-    // i mam niepotrzebnie skompilowane 
-
-    // std::vector std::pair i std::set poznac nauczyc sie
+    std::set<std::pair<int, int>> pozycje;          // pozycje statków
+    // Statek jest jednym obiektem a tutaj przechowujemy pozycje iluś statków?
+    // Jest to dlatego aby móc robic strzały itd
 
 public:
-    Statek();
     Statek(int len, std::pair<int,int>* pola);
  
-    void dodajSegment(int x, int y);
+    void dodajSegment(int x, int y);                // zajmij kolejne pola przez 1 statek
+                                                    // StatPoz sluzy po to aby kazde pole mozna bylo
+                                                    // jednoznacznie zidentyfikowac z danym statkiem
+
+    // ale  pozycje to jest set, par <int, int> a nie set StatPoz
+    // i fun dodaj segment nie dodaje *s, co musi byc
+    // 
     bool strzal(int x, int y);
     bool czyTrafiony(int x, int y);
     bool czyZatopiony() const;
