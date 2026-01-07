@@ -15,6 +15,7 @@ private:
 public:
 	Plansza(int r);
 	T sprawdz(int x, int y) const;
+	char sprawdz(int x, int y) const;
 	void ustaw(int x, int y, T wartosc);
 	int rozmiar() const { return roz; }
 
@@ -29,13 +30,14 @@ Plansza<T>::Plansza(int r) : roz(r) {
 	pola.assign(r, std::vector<T>(r));
 }
 
-template <typename T>
+/*template <typename T>
 T Plansza<T>::sprawdz(int x, int y) const {
 	if (x >= 0 && x < roz && y >= 0 && y < roz) {
 		return pola[y][x];
 	}
 	throw std::out_of_range("Poza plansza");
 }
+*/
 
 template <typename T>
 void Plansza<T>::ustaw(int x, int y, T wartosc) {
@@ -62,3 +64,12 @@ std::ostream& operator<<(std::ostream& o, const Plansza<T>& p) {
 	return o;
 }
 
+char Plansza<kratka>::sprawdz(int x, int y) const {
+switch (pola[y][x]) {
+case PUSTA:    return '~'; break;
+case ZAJETE:   return 'O'; break;
+case TRAFIONY: return 'X'; break;
+case PUDLO:    return '*'; break;
+default:       return '?'; break;
+}
+}

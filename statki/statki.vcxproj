@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\gracz.cpp" />
     <ClCompile Include="..\main.cpp" />
     <ClCompile Include="..\plansza.cpp" />
     <ClCompile Include="..\statki.cpp" />
