@@ -16,7 +16,7 @@ class Gracz {
   public:
    static bool CzySrandZrobiony;
     Gracz(int rozmiar);     // rozmiar = rozmiar planszy
-    // todo: destruktor
+    ~Gracz();
     void strzel(int x, int y);
     const Plansza<kratka>* getPlanszaStrzalow() const;
     void ustawOkretyLosowo();

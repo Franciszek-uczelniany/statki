@@ -10,6 +10,11 @@ Gracz::Gracz(int rozmiar) {
         PlanszaStatkow = new Plansza<kratka>(rozmiar);
 }
 
+Gracz::~Gracz() {
+        free(PlanszaStrzalow);
+        free(PlanszaStatkow);
+}
+
 // strzał gracza
 void Gracz::strzel(int x, int y) {
     try {

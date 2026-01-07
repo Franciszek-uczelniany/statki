@@ -13,7 +13,6 @@ private:
 public:
     Statek(int len, std::pair<int,int>* pola);
     Statek(int len);
-    //todo: destruktor!
     void dodajPozycje(int x, int y);
     bool strzal(int x, int y);
     bool czyTrafiony(int x, int y);
