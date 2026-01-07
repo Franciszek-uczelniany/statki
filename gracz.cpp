@@ -32,11 +32,54 @@ const Plansza<kratka>* Gracz::getPlanszaStrzalow() const {
     return planszaStrzalow;
 }
 
+bool Gracz::CzySrandZrobiony = false;
+
+bool Gracz::ustawOkretRecznie(int x, int y, int dlugosc, bool poziomo) {
+    try {
+        for (int i = 0; i < dlugosc; i++) {
+            int xx = poziomo ? x + i : x;
+            int yy = poziomo ? y : y + i;
+
+            if (okrety->sprawdz(xx, yy) != PUSTA)
+                return false;
+        }
+
+        for (int i = 0; i < dlugosc; i++) {
+            int xx = poziomo ? x + i : x;
+            int yy = poziomo ? y : y + i;
+
+            okrety->ustaw(xx, yy, ZAJETE);
+        }
+
+        return true;
+    }
+
+    catch(exception) {
+    return false;
+};
+
+}
+
+void Gracz::ustawOkretyLosowo() {
+    for (int i = 0; i < LICZBA_OKRETOW; i++) {
+        bool ustawiony = false;
+
+        while (!ustawiony) {
+            int x = rand() % okrety->rozmiar();
+            int y = rand() % okrety->rozmiar();
+            bool poziomo = rand() % 2;
+
+            ustawiony = ustawOkretRecznie(
+                x, y,
+                dlugosciOkretow[i],
+                poziomo
+            );
+        }
+    }
+}
+
+
+
 // rozlozenie okretow recznie i automatycznie
 // i w klasie gracz stworzyc tablice okreslajaca okrety, dlugosci okretow 
 // sln zaaktualizowac recznie
-
-
-// chcielibysmy aby w kontrktorze gracz srand uruchomiony tylko raz
-// niezaleznie ile graczy bedzie 
-// zmienna statyczna w klasie zrobic od tego
