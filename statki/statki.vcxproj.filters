@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Gracz.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="..\main.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
@@ -33,6 +30,9 @@
       <Filter>Pliki źródłowe</Filter>
     </ClInclude>
     <ClInclude Include="..\statki.h">
+      <Filter>Pliki źródłowe</Filter>
+    </ClInclude>
+    <ClInclude Include="..\gracz.h">
       <Filter>Pliki źródłowe</Filter>
     </ClInclude>
   </ItemGroup>

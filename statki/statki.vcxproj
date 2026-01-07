@@ -123,12 +123,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Gracz.cpp" />
     <ClCompile Include="..\main.cpp" />
     <ClCompile Include="..\plansza.cpp" />
     <ClCompile Include="..\statki.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\gracz.h" />
     <ClInclude Include="..\plansza.h" />
     <ClInclude Include="..\statki.h" />
   </ItemGroup>
