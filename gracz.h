@@ -4,12 +4,13 @@
 #include <iostream>
 #include <utility>
 #include <vector>
-#define LICZBA_OKRETOW 5
+#define LICZBA_OKRETOW 5      // Liczba typów okrętów
 
 class Gracz {
   private:
-    Plansza<kratka> *planszaStrzalow;
-    Plansza<StatPoz> *okrety; 
+    Plansza<kratka> *PlanszaStrzalow;       // Plansza naszych statków
+    Plansza<kratka> *PlanszaStatkow;        // Plansza naszych strzałów 
+    vector<Statek> statki;
     int dlugosciOkretow[LICZBA_OKRETOW] = {5, 4, 3, 3, 2};
             
   public:
@@ -19,10 +20,8 @@ class Gracz {
     void strzel(int x, int y);
     const Plansza<kratka>* getPlanszaStrzalow() const;
     void ustawOkretyLosowo();
-    bool ustawOkretRecznie(int x, int y, int dlugosc, bool poziomo);
+    bool ustawStatekRecznie(int x, int y, int dlugosc, bool poziomo);
 };
-
-// zmienna statyczna istnieje nawet jak nie ma obiektu
 
 // napisac funkcje ktora zwraca z planszy wolne pola
 // czyli (0,1), (1,0), (1,1)

@@ -10,13 +10,16 @@ Statek::Statek(int len, std::pair<int,int>* pola) {
         for (int i = 0; i < len; i++) {
             pozycje.insert(pola[i]);
         }
-    }
-
-void Statek::dodajSegment(int x, int y) {
-    pozycje.insert({ x, y });
+    dlugosc = len;
 }
 
+Statek::Statek(int len) {
+    dlugosc = len;
+}
+
+
 // dokonujemy strzalu i jesli trafilismy to ta pozycja jest czyszczona
+// todo: pozycje maj? wskazywa? na pozycje wroga
 bool Statek::strzal(int x, int y) {
     auto it = pozycje.find({ x, y });
     if (it != pozycje.end()) {
@@ -38,3 +41,6 @@ bool Statek::czyZatopiony() const {
     return pozycje.empty();
 }
 
+void Statek::dodajPozycje(int x, int y) {
+    pozycje.insert({ x, y });
+}

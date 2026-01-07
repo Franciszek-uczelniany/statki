@@ -6,17 +6,17 @@ using namespace std;
 // konstruktor
 Gracz::Gracz(int rozmiar) {
         if(CzySrandZrobiony==false) srand(time(nullptr));
-        planszaStrzalow = new Plansza<kratka>(rozmiar);
-        okrety = new Plansza<StatPoz>(rozmiar);
+        PlanszaStrzalow = new Plansza<kratka>(rozmiar);
+        PlanszaStatkow = new Plansza<kratka>(rozmiar);
 }
 
 // strzał gracza
 void Gracz::strzel(int x, int y) {
     try {
-        kratka pole = planszaStrzalow->sprawdz(x, y);
+        kratka pole = PlanszaStrzalow->sprawdz(x, y);
 
         if (pole == PUSTA) {
-            planszaStrzalow->ustaw(x, y, PUDLO);
+            PlanszaStrzalow->ustaw(x, y, PUDLO);
             cout << "Pudlo!\n";
         } else {
             cout << "Tu juz strzelales!\n";
@@ -29,39 +29,39 @@ void Gracz::strzel(int x, int y) {
 
 // getter planszy strzałów
 const Plansza<kratka>* Gracz::getPlanszaStrzalow() const {
-    return planszaStrzalow;
+    return PlanszaStrzalow;
 }
 
 bool Gracz::CzySrandZrobiony = false;
 
-bool Gracz::ustawOkretRecznie(int x, int y, int dlugosc, bool poziomo) {
-    try {
-        for (int i = 0; i < dlugosc; i++) {
-            int xx = poziomo ? x + i : x;
-            int yy = poziomo ? y : y + i;
+bool Gracz::ustawStatekRecznie(int x, int y, int dl, bool poziomo) {
+    Statek s(dl);
 
-            if (okrety->sprawdz(xx, yy) != PUSTA)
-                return false;
-        }
+    for (int i = 0; i < dl; i++) {
+        int xx = poziomo ? x + i : x;
+        int yy = poziomo ? y : y + i;
 
-        for (int i = 0; i < dlugosc; i++) {
-            int xx = poziomo ? x + i : x;
-            int yy = poziomo ? y : y + i;
+        if (PlanszaStatkow->sprawdz(xx,yy) != PUSTA)
+            return false;
 
-            okrety->ustaw(xx, yy, ZAJETE);
-        }
-
-        return true;
+        s.dodajPozycje(xx,yy);
     }
 
-    catch(exception) {
-    return false;
-};
+    // zapis na planszy
+    for (int i = 0; i < dl; i++) {
+        int xx = poziomo ? x + i : x;
+        int yy = poziomo ? y : y + i;
+        PlanszaStatkow->ustaw(xx,yy,ZAJETE);
+    }
 
+    statki.push_back(s);
+    return true;
 }
 
+
 void Gracz::ustawOkretyLosowo() {
-    for (int i = 0; i < LICZBA_OKRETOW; i++) {
+    //TODO
+ /*   for (int i = 0; i < LICZBA_OKRETOW; i++) {
         bool ustawiony = false;
 
         while (!ustawiony) {
@@ -76,6 +76,7 @@ void Gracz::ustawOkretyLosowo() {
             );
         }
     }
+        */
 }
 
 

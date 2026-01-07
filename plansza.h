@@ -29,7 +29,6 @@ Plansza<T>::Plansza(int r) : roz(r) {
     pola.assign(r, std::vector<T>(r));
 }
 
-// sprawdz()
 template <typename T>
 T Plansza<T>::sprawdz(int x, int y) const {
     if (x >= 0 && x < roz && y >= 0 && y < roz) {
@@ -38,7 +37,6 @@ T Plansza<T>::sprawdz(int x, int y) const {
     throw std::out_of_range("Poza plansza");
 }
 
-// ustaw()
 template <typename T>
 void Plansza<T>::ustaw(int x, int y, T wartosc) {
     pola[y][x] = wartosc;
@@ -64,13 +62,3 @@ std::ostream& operator<<(std::ostream& o, const Plansza<T>& p) {
     return o;
 }
 
-// operator<< dla enum kratka
-inline std::ostream& operator<<(std::ostream& o, kratka k) {
-    switch (k) {
-        case PUSTA:    return o << "~";
-        case ZAJETE:   return o << "O";
-        case TRAFIONY: return o << "X";
-        case PUDLO:    return o << "*";
-    }
-    return o << "?";
-}
