@@ -18,8 +18,6 @@ Statek::Statek(int len) {
 }
 
 
-// dokonujemy strzalu i jesli trafilismy to ta pozycja jest czyszczona
-// todo: pozycje maj? wskazywa? na pozycje wroga
 bool Statek::strzal(int x, int y) {
 	auto it = pozycje.find({ x, y });
 	if (it != pozycje.end()) {
