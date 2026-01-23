@@ -85,3 +85,13 @@ bool Gracz::CzyPrzegral() const {
     }
     return true;
 }
+
+
+
+
+Si::Si(int rozmiar)
+    : Gracz(rozmiar) {}
+
+void Si::wykonajRuch() {
+    std::cout << "SI wykonuje ruch...\n";
+///////TODO}

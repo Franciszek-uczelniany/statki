@@ -2,10 +2,19 @@
 #include <ctime>
 #include "gracz.h"
 #include "dziedziczenie.h"
+#include "manager.h"
 
 using namespace std;
 
+
 int main() {
+    Manager m(10);
+    m.UtworzGraczy();
+    m.Start();
+    return 0;
+}
+
+int main222() {
     srand(time(nullptr));
 
     Czlowiek gracz1("Franio", 10);

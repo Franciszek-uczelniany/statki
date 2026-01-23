@@ -26,3 +26,11 @@ public:
     const Plansza<kratka>& getPlanszaFlota() const { return planszaFlota; }
     std::string getImie() const { return imie; }
 };
+
+
+class Si : public Gracz {
+public:
+    Si(int rozmiar);
+
+    void wykonajRuch();
+};

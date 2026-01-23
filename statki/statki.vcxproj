@@ -42,7 +42,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -125,11 +125,13 @@
   <ItemGroup>
     <ClCompile Include="..\gracz.cpp" />
     <ClCompile Include="..\main.cpp" />
-    <ClCompile Include="..\plansza.cpp" />
+    <ClCompile Include="..\manager.cpp" />
     <ClCompile Include="..\statki.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\dziedziczenie.h" />
     <ClInclude Include="..\gracz.h" />
+    <ClInclude Include="..\manager.h" />
     <ClInclude Include="..\plansza.h" />
     <ClInclude Include="..\statki.h" />
   </ItemGroup>
