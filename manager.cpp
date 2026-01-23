@@ -1,7 +1,3 @@
-// get plansza radar i get plansza flota
-// czepia sie tez konstruktora klasy Si, nie wiem czemu
-
-
 #include "manager.h"
 #include <iostream>
 
@@ -16,34 +12,22 @@ Manager::~Manager() {
 }
 
 void Manager::UtworzGraczy() {
-    int wybor;
+    cout << "Tworze graczy...\n";
 
-    cout << "Gracz 1: (1) Czlowiek (2) SI: ";
-    cin >> wybor;
-    if (wybor == 2)
-        g1 = new Si(rozmiarPlanszy);
-    else
-        g1 = new Gracz(rozmiarPlanszy);
+    // Na razie: obaj SI
+    g1 = new Si(rozmiarPlanszy);
+    g2 = new Si(rozmiarPlanszy);
 
-    cout << "Gracz 2: (1) Czlowiek (2) SI: ";
-    cin >> wybor;
-    if (wybor == 2)
-        g2 = new Si(rozmiarPlanszy);
-    else
-        g2 = new Gracz(rozmiarPlanszy);
-
-    // automatycznie rozstawiamy okrêty
-    g1->ustawOkretyLosowo();
-    g2->ustawOkretyLosowo();
+    g1->UstawStatki();
+    g2->UstawStatki();
 }
 
 void Manager::Start() {
-    cout << "\n=== START GRY ===\n";
+    cout << "\nPlansza statkow gracza 1:\n";
+    cout << g1->getPlanszaStatkow() << endl;
 
-    cout << "\nPlansza statkow Gracza 1:\n";
-    cout << *g1->getPlanszaStatkow() << endl;
+    cout << "\nPlansza statkow gracza 2:\n";
+    cout << g2->getPlanszaStatkow() << endl;
 
-    cout << "\nPlansza statkow Gracza 2:\n";
-    cout << *g2->getPlanszaStatkow() << endl;
-
+    cout << "\nStart rozgrywki...\n";
 }

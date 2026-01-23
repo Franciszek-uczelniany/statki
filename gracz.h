@@ -6,31 +6,29 @@
 
 class Gracz {
 protected:
-    std::string imie;
-    Plansza<kratka> planszaRadar; 
-    Plansza<kratka> planszaFlota;
+    std::string nazwa;
+    Plansza<kratka> planszaStatkow;
+    Plansza<kratka> planszaRadar;
     std::vector<Statek> statki;
-    std::vector<int> dlugosciOkretow = { 5, 4, 3, 3, 2 };
-
-    bool czyMoznaPostawic(int x, int y, int dl, bool poziomo);
-    void rozmiescLosowo();
 
 public:
     Gracz(std::string n, int rozmiar);
     virtual ~Gracz() {}
+
+    // metody czysto wirtualne
     virtual void WykonajRuch(Gracz& przeciwnik) = 0;
     virtual void UstawStatki() = 0;
-    bool OtrzymajStrzal(int x, int y);
-    bool CzyPrzegral() const;
+
     const Plansza<kratka>& getPlanszaRadar() const { return planszaRadar; }
-    const Plansza<kratka>& getPlanszaFlota() const { return planszaFlota; }
-    std::string getImie() const { return imie; }
+    const Plansza<kratka>& getPlanszaStatkow() const { return planszaStatkow; }
 };
 
 
 class Si : public Gracz {
 public:
-    Si(int rozmiar);
+    Si(int rozmiar) : Gracz("SI", rozmiar) {};
 
-    void wykonajRuch();
+    void WykonajRuch(Gracz& przeciwnik); 
+    void UstawStatki();
+    
 };
