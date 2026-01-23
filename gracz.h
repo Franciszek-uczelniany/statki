@@ -16,7 +16,6 @@ public:
     Gracz(std::string n, int rozmiar);
     virtual ~Gracz() {}
 
-    // metody czysto wirtualne
     virtual void WykonajRuch(Gracz& przeciwnik) = 0;
     virtual void UstawStatki() = 0;
     bool czyMoznaPostawic(int x, int y, int dl, bool poziomo);
@@ -34,4 +33,12 @@ public:
     void WykonajRuch(Gracz& przeciwnik); 
     void UstawStatki();
     
+};
+
+class Czlowiek : public Gracz {
+public:
+    Czlowiek(std::string imie, int rozmiar);
+
+    void WykonajRuch(Gracz& przeciwnik) override;
+    void UstawStatki() override;
 };

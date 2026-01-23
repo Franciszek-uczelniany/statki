@@ -27,6 +27,20 @@ void Si::UstawStatki() {
         // tu póŸniej losowe ustawianie
 }
 
+Czlowiek::Czlowiek(std::string imie, int rozmiar)
+    : Gracz(imie, rozmiar)
+{}
+
+void Czlowiek::WykonajRuch(Gracz& przeciwnik) {
+    std::cout << nazwa << " wykonuje ruch...\n";
+    // podstawowa implementacja strza³u
+}
+
+void Czlowiek::UstawStatki() {
+    std::cout << nazwa << " ustawia statki...\n";
+    // np. rêczne ustawianie
+}
+
 bool Gracz::czyMoznaPostawic(int x, int y, int dl, bool poziomo) {
     int roz = planszaStatkow.rozmiar();
     if (poziomo) {
